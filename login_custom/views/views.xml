@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+    <template id="assets_backend_inher" name="Backend Theme" inherit_id="web.assets_frontend">
+    <xpath expr="."  position="inside">
+                <link rel="stylesheet" href="/login_custom/static/css/new_file.css"/>
+      </xpath>
+    </template>
+
+    <template id="login_layout" inherit_id="web.login_layout" name="Login Layout Inherit">
+    <xpath expr="//t[@t-set='body_classname']" position="after">
+      <t t-set="body_classname" t-value="''"/>
+      </xpath>
+      
+      <xpath expr="//div[hasclass('container')]" position="attributes">
+        <attribute name="class">body_login</attribute>
+      </xpath>     
+      <xpath expr="//div[@t-attf-class='card border-0 mx-auto mt-5 bg-100 {{login_card_classes}} o_database_list']" position="before">
+        <div id="background-wrapper" t-attf-style="background-image:url(/login_custom/static/src/risen-wang-20jX9b35r_M-unsplash.jpg)"></div>
+      </xpath>
+      <xpath expr="//div[@t-attf-class='card border-0 mx-auto mt-5 bg-100 {{login_card_classes}} o_database_list']" position="attributes">
+        <attribute name="class">col-lg-3 col-md-4 col-sm-4 col-xs-11 o_database_list</attribute>
+        <attribute name="style"></attribute>
+      </xpath>
+      
+      <xpath expr="//div[hasclass('card-body')]/div/img[1]" position="attributes">
+        <attribute name="class">company_logo</attribute>
+      </xpath>
+
+      <xpath expr="//t[@t-if='not disable_database_manager']" position="replace">
+          <span></span>
+      </xpath>
+      <xpath expr="//a[@href='https://www.odoo.com?utm_source=db&amp;utm_medium=auth']" position="replace">
+          <span></span>
+      </xpath>
+    </template>
+
+    <template id="login" inherit_id="web.login" name="Login Inherit">
+      <xpath expr="//label[@for='db']" position="replace" />
+    <xpath expr="//label[@for='login']" position="replace" />
+    <xpath expr="//label[@for='password']" position="replace" />
+    
+    <xpath expr="//input[@name='login']" position="attributes">
+      <attribute name="placeholder">Email ...</attribute>
+      <attribute name="autocomplete">off</attribute>
+      <attribute name="autocorrect">off</attribute>
+    </xpath>
+    
+    <xpath expr="//input[@name='password']" position="attributes">
+      <attribute name="placeholder">Password ...</attribute>
+    </xpath>
+  </template>
+    </data>
+</odoo>
+
+
+
